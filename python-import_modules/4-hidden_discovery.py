@@ -1,9 +1,15 @@
 #!/usr/bin/python3
-import hidden_4
 
-if __name__ == '__main__':
-    def_names = dir(hidden_4)
+# هذا الكود لن يعمل إلا عند التشغيل المباشر
+if __name__ == "__main__":
+    import marshal  # لقراءة الكود من ملفات .pyc
 
-    for i in range(len(def_names)):
-        if def_names[i][:2] != '__':
-            print(def_names[i])
+    # افتح الملف الثنائي
+    with open("/tmp/hidden_4.pyc", "rb") as f:
+        f.read(16)          # تخطي الـ header للملف .pyc
+        code = marshal.load(f)  # قراءة الكود المخزن
+
+    # استخرج كل الأسماء المعرفة في الملف
+    for name in sorted(code.co_names):  # الترتيب أبجدي
+        if not name.startswith("__"):   # تجاهل أسماء النظام
+            print(name)                 # اطبع الاسم
