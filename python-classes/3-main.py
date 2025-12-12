@@ -1,27 +1,18 @@
 #!/usr/bin/python3
-"""
-Module defines a class square with a private instance attribute size
-"""
+Square = __import__('3-square').Square
 
+my_square_1 = Square(3)
+print("Area: {}".format(my_square_1.area()))
 
-class Square:
-    """
-    Class Square that defines a square by: (based on 2-square.py)
-    """
-    def __init__(self, size=0):
-        """
-        Initialize a square with size.
-        """
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
-        self.__size = size
+try:
+    print(my_square_1.size)
+except Exception as e:
+    print(e)
 
-    def area(self):
-        """
-        Public instance method.
-        Returns:
-            int: the current square area.
-        """
-        return self.__size * self.__size
+try:
+    print(my_square_1.__size)
+except Exception as e:
+    print(e)
+
+my_square_2 = Square(5)
+print("Area: {}".format(my_square_2.area()))
