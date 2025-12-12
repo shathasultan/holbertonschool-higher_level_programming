@@ -1,6 +1,17 @@
 #!/usr/bin/python3
-no_c = __import__('5-no_c').no_c
+Square = __import__('5-square').Square
 
-print(no_c("Best School"))
-print(no_c("Chicago"))
-print(no_c("C is fun!"))
+my_square = Square(3)
+my_square.my_print()
+
+print("--")
+
+my_square.size = 10
+my_square.my_print()
+
+print("--")
+
+my_square.size = 0
+my_square.my_print()
+
+print("--")
